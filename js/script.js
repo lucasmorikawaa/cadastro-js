@@ -1,5 +1,10 @@
 $("#inputPrice").mask('000.000.000.000.000,00', {reverse: true});
 
+function convertToNumber(priceFormat){
+    return priceFormat.replace(/\./g, '').replace(',', '.');
+}
+
+
 var products = [
   {
     id: 1,
@@ -42,6 +47,25 @@ function loadProducts(){
     for(let prod of products){
         addNewRow(prod);
     }
+}
+
+function save(){
+
+  var prod = {
+    id: products.length + 1,
+    name: document.getElementById("inputNome").value,
+    description: document.getElementById("inputDescricao").value,
+    price: convertToNumber(document.getElementById("inputPrice").value),
+    category: document.getElementById("inputCategoria").value,
+    promotion: document.getElementById("checkBoxPromotion").checked,
+    new: document.getElementById("checkBoxNew").checked,
+  };
+
+  addNewRow(prod);
+  products.push(prod);
+
+  document.getElementById("formProduct").reset();
+
 }
 
 function addNewRow(prod){

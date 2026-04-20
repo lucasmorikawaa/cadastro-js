@@ -20,29 +20,29 @@
             </div>
             <div class="row">
                 <div class="col-md-10 offset-md-1">
-                    <form>
+                    <form onsubmit="save(); return false;" id="formProduct">
                         <div class="row mb-3 mt-3">
                             <label for="inputNome" class="col-sm-2 col-form-label">Nome:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNome">
+                                <input type="text" class="form-control" id="inputNome" required>
                             </div>
                         </div>
                         <div class="row mb-3 mt-3">
                             <label for="inputDescricao" class="col-sm-2 col-form-label">Descricao:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputDescricao">
+                                <input type="text" class="form-control" id="inputDescricao" required>
                             </div>
                         </div>
                         <div class="row mb-3 mt-3">
                             <label for="inputPrice" class="col-sm-2 col-form-label">Preço:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputPrice">
+                                <input type="text" class="form-control" id="inputPrice" required>
                             </div>
 
                             <label for="inputCategoria" class="col-sm-2 col-form-label">Categoria:</label>
                             <div class="col-sm-4">
-                                <select class="form-select" aria-label="Default select example" id="inputCategoria">
-                                    <option selected>Selecione uma categoria</option>
+                                <select class="form-select" aria-label="Default select example" id="inputCategoria" required>
+                                    <option value="" selected>Selecione uma categoria</option>
                                     <option value="1">Nacional</option>
                                     <option value="2">Importado</option>
                                     <option value="3">Produção Própria</option>
@@ -54,14 +54,14 @@
                             <label class="col-sm-2 col-form-label">Opções:</label>
                             <div class="col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="inputOption">
-                                    <label class="form-check-label" for="checkDefault">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkBoxPromotion">
+                                    <label class="form-check-label" for="checkBoxPromotion">
                                         Promoção
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="inputOption">
-                                    <label class="form-check-label" for="checkDefault">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkBoxNew">
+                                    <label class="form-check-label" for="checkBoxNew">
                                         Lançamento
                                     </label>
                                 </div>
