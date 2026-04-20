@@ -69,34 +69,27 @@ function save(){
 }
 
 function addNewRow(prod){
-    var table = document.getElementById("productsTable");
 
+    var table = document.getElementById("productsTable");
     var newRow = table.insertRow();
 
-    var idNode = document.createTextNode(prod.id);
-    var nomeProd = document.createTextNode(prod.name);
-    var descriptionProd = document.createTextNode(prod.description);
-    var categoriaProd = document.createTextNode(categories[prod.category - 1].name);
+    newRow.insertCell().appendChild(document.createTextNode(prod.id));
+
+    newRow.insertCell().appendChild(document.createTextNode(prod.name));
+
+    var cellDesc = newRow.insertCell();
+    cellDesc.className = "d-none d-md-table-cell";
+    cellDesc.appendChild(document.createTextNode(prod.description));
+
+    var formatador = new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' });
+    newRow.insertCell().appendChild(document.createTextNode(formatador.format(prod.price)));
+
+    var nomeCat = categories[prod.category - 1].name;
+    newRow.insertCell().appendChild(document.createTextNode(nomeCat));
+
     var options = '';
-    var formatador = new Intl.NumberFormat('pt-br', {
-        style: 'currency',
-        currency: 'BRL',
-    })
-    var precoProd = document.createTextNode(formatador.format(prod.price));
-
-
-    newRow.insertCell().appendChild(idNode);
-    newRow.insertCell().appendChild(nomeProd);
-    newRow.insertCell().appendChild(descriptionProd);
-    newRow.insertCell().appendChild(precoProd);
-    newRow.insertCell().appendChild(categoriaProd);
-
-    if(prod.promotion){
-        options = '<span class="badge text-bg-success me-1">P</span>';
-    } 
-    if (prod.new){
-        options += '<span class="badge text-bg-primary">L</span>';
-    } 
+    if(prod.promotion) options += '<span class="badge text-bg-success me-1 d-none d-md-table-cell">P</span>';
+    if(prod.new) options += '<span class="badge text-bg-primary d-none d-md-table-cell">L</span>';
     
     newRow.insertCell().innerHTML = options;
 
